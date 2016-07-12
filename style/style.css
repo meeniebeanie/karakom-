@@ -1,0 +1,82 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  font-size: 16px;
+}
+
+h1 {
+  font-family: "Shrikhand", cursive;
+  font-size: 2em;
+}
+
+h2 {
+  font-family: "Shrikhand", cursive;
+  font-size: 1em;
+}
+
+h3 {
+  font-family:"Montserrat", sans-serif;
+}
+
+#firstSection {
+  height: 10vh;
+  width: 100vw;
+  background-color: #ffcc2f;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+#secondSection {
+  background-color: #d7d7d8;
+  height: 70vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.lyrics {
+  display: block;
+  height: 20vh;
+  padding: 0 20px;
+}
+
+.userInput {
+ display: block;
+ height: 20vh;
+ padding: 0 50px;
+}
+
+#thirdSection {
+height: 20vh;
+width: 100vw;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+#p1Score{
+  height:20vh;
+  width: 50vw;
+  float: left;
+  background-color: #ef5734;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#p2Score{
+height:20vh;
+width: 50vw;
+float: right;
+background-color: #2baf2b;
+display: flex;
+justify-content: center;
+align-items: center;
+}

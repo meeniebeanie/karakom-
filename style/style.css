@@ -19,6 +19,7 @@ h2 {
 
 h3 {
   font-family:"Montserrat", sans-serif;
+  font-size:2em;
 }
 
 #firstSection {
@@ -53,6 +54,7 @@ h3 {
  display: block;
  height: 20vh;
  padding: 10vw 10vw;
+ overflow: hidden;
 }
 
 #thirdSection {

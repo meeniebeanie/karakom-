@@ -8,7 +8,7 @@ html, body {
 
 h1 {
   font-family: "Shrikhand", cursive;
-  font-size: 2em;
+  font-size: 3em;
   margin: 0;
 }
 
@@ -62,6 +62,10 @@ h3 {
  height: 20vh;
  padding: 10vw 10vw;
  overflow: hidden;
+}
+
+#userText {
+
 }
 
 #thirdSection {

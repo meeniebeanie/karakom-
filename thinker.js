@@ -17,8 +17,12 @@ $(document).ready(function() {
   var set4 = new Set("your skin makes me cry", 4000).addToArray();
   var set5 = new Set("you float like a feather", 4000).addToArray();
   var set6 = new Set("in a beautiful world", 4000).addToArray();
-  var set7 = new Set("i wish I was special", 4000).addToArray();
-  var set8 = new Set("youre so very special", 4000).addToArray();
+  var set7 = new Set("i wish i was special", 4200).addToArray();
+  var set8 = new Set("youre so very special", 4200).addToArray();
+  var set9 = new Set("but im a creeeeeeeeeeeepe", 8000).addToArray();
+  var set10 = new Set("im a weird doughhhhhh", 8000).addToArray();
+  var set11 = new Set("what the hell am i doing here", 8000).addToArray();
+  var set12 = new Set("i dont belong here", 7000).addToArray();
 
   // initialize gameLineCount- change to next line
   var gameLineCount = 0;
@@ -33,7 +37,7 @@ $(document).ready(function() {
     } else if (gameLineCount === setLyrics.length){
       console.log("nextLine ended");
       gameLineCount = 0;
-      $("#lyricsText").text("game end.");
+      $("#lyricsText").html("<h1>"+playerScore+"</h1>");
     }
   };
 
@@ -46,10 +50,11 @@ $(document).ready(function() {
       $("#start").unbind(enter); //disables enter button!
       $("#start").remove(); // removes the p id="start"
 
+      var audio = new Audio('sounds/Creep.mp3');
+      //counter is set to 6, calls every 1second and countsdown!
+      //setInterval calls for the function at every sepcified intervals
       var counter = 6;
       var interval = setInterval(function() {
-        //setInterval calls for the function at every sepcified intervals
-        //counter is set to 6, calls every 1second and countsdown!
         counter--;
         if (counter >= 0) {
           $("#lyricsText").text(counter); //prints countdown
@@ -62,6 +67,9 @@ $(document).ready(function() {
         }
       }, 1000);
       setTimeout(nextLine,6000);
+      setTimeout(function() {
+        audio.play(); // play it through JavaScript after 3 seconds
+      }, 5000);
     }
     else { }
   };
@@ -108,21 +116,6 @@ $(document).ready(function() {
 
     console.log("playerLineCount: " + playerLineCount, "gameLineCount:" + gameLineCount);
   });
-
-
-
-
-  // var nextLetter = 0;
-  // function checkLetter(){
-  // if(setLyrics[0].lyricsSplit[nextLetter] == letter)
-  //   {
-  //     console.log(nextLetter);
-  //     nextLetter ++;
-  //     console.log(nextLetter);
-  //   }
-  // }
-  // checkLetter();t
-
 
   //PROBLEM: if player presses other letters before pressing enter, it will run!
 

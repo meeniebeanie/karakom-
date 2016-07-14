@@ -22,6 +22,12 @@ h3 {
   font-size:2em;
 }
 
+#start {
+  font-family:"Montserrat", sans-serif;
+  font-size:1em;
+  color: grey;
+}
+
 #firstSection {
   height: 10vh;
   width: 100vw;
@@ -50,7 +56,7 @@ h3 {
   overflow: hidden;
 }
 
-.userInput {
+.userInputArea {
  display: block;
  height: 20vh;
  padding: 10vw 10vw;

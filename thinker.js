@@ -11,32 +11,35 @@ $(document).ready(function() {
       setLyrics.push(this);
     };
   }
-  var set1 = new Set("When you were here before", 500).addToArray();
-  var set2 = new Set("Couldn't look you in the eye", 500).addToArray();
-  var set3 = new Set("You're just like an angel", 500).addToArray();
-  var set4 = new Set("Your skin makes me cry", 500).addToArray();
-  var set5 = new Set("You float like a feather", 500).addToArray();
-  var set6 = new Set("In a beautiful world", 500).addToArray();
-  var set7 = new Set("I wish I was special", 500).addToArray();
-  var set8 = new Set("You're so very special", 500).addToArray();
+  var set1 = new Set("when you were here before", 4000).addToArray();
+  var set2 = new Set("couldnt look you in the eye", 4000).addToArray();
+  var set3 = new Set("youre just like an angel", 4000).addToArray();
+  var set4 = new Set("your skin makes me cry", 4000).addToArray();
+  var set5 = new Set("you float like a feather", 4000).addToArray();
+  var set6 = new Set("in a beautiful world", 4000).addToArray();
+  var set7 = new Set("i wish I was special", 4000).addToArray();
+  var set8 = new Set("youre so very special", 4000).addToArray();
 
-  var counter = 0;
+  // initialize gameLineCount- change to next line
+  var gameLineCount = 0;
   var nextLine = function () {
-    if (counter < setLyrics.length) {
-      $("#lyricsText").text(setLyrics[counter].lyricsJoin); //change display lyrics
-      console.log(setLyrics[counter].lyricsJoin + " " + setLyrics[counter].time);
+    if (gameLineCount < setLyrics.length) {
+      $("#lyricsText").text(setLyrics[gameLineCount].lyricsJoin); //change display lyrics
+      console.log(setLyrics[gameLineCount].lyricsJoin + " " + setLyrics[gameLineCount].time);
 
-      setTimeout(nextLine,setLyrics[counter].time);
+      setTimeout(nextLine,setLyrics[gameLineCount].time);
       //timesout and calls the next line according to the allocated time by calling itself
-      counter++;
-    } else if (counter === setLyrics.length){
+      gameLineCount++;
+    } else if (gameLineCount === setLyrics.length){
       console.log("nextLine ended");
-      counter = 0;
+      gameLineCount = 0;
+      $("#lyricsText").text("game end.");
     }
   };
 
-  $("#lyricsSection").append("<p id='start'>Press Enter to start!</p>");
+  // Activate enter key to start the game
 
+  $("#lyricsSection").append("<p id='start'>Press Enter to start!</p>");
   var enterStart = function(enter) {
     if (enter.which === 13) { //when enter is clicked
       console.log("clicked!");
@@ -62,43 +65,52 @@ $(document).ready(function() {
     }
     else { }
   };
-  // $(document).keydown(enter.which === 13);
   $(document).on('keydown', enterStart);
-  // enterStart();
 
-  // attach key listener to the document!
-  var nextLetter = 0;
-  var nextSentence = 0;
+  // Display user input and compare against lyricsSplit[letterCount]
+  // count player score
+  var letterCount = 0;
+  var playerLineCount = 0;
   var letterPressed = '';
+  var playerScore = '';
+
 
   var pressedKey =
   $(document).keypress(function(objEvent) {
     (objEvent) ? keycode = objEvent.keyCode: keycode = event.keyCode;
     letter = String.fromCharCode(keycode); //this gets the letter printed instead of the number
-    console.log(letter);
+    console.log(letter + " is pressed.");
 
-    if (letter === setLyrics[nextSentence].lyricsSplit[nextLetter]){
+    if (letter === setLyrics[playerLineCount].lyricsSplit[letterCount]){
       console.log("got it right");
-      nextLetter++; //move to next letter
-      console.log(nextLetter);
 
+      letterCount++; //move to next letter
+      console.log("moving on to letter " + letterCount);
+
+      // $("#lyricsText").attr("color","blue");
       letterPressed += '' + letter;// concatenate letters
       $("#userText").text(letterPressed); // change display text
 
-      if(nextLetter === setLyrics[nextSentence].lyricsSplit.length){
-        nextSentence++;
-        console.log(nextSentence);
-        letterPressed = ""; //clears screen
-        nextLetter = 0;
-        return nextSentence;
-      }
-
-      return nextLetter;
+      playerScore++;
+      $("#p1Score").text(playerScore);
+      console.log("player's score is now: "+ playerScore);
+      return playerScore, letterCount;
     }
-    else {}
-    console.log(nextLetter);
 
-});
+    if (keycode == 13){
+      if(letterCount >= setLyrics[playerLineCount].lyricsSplit.length){
+      $("#userText").text("");
+      playerLineCount++;
+      letterPressed = ""; //clears screen
+      letterCount = 0;
+      }
+    }
+
+    console.log("playerLineCount: " + playerLineCount, "gameLineCount:" + gameLineCount);
+  });
+
+
+
 
   // var nextLetter = 0;
   // function checkLetter(){
@@ -109,7 +121,7 @@ $(document).ready(function() {
   //     console.log(nextLetter);
   //   }
   // }
-  // checkLetter();
+  // checkLetter();t
 
 
   //PROBLEM: if player presses other letters before pressing enter, it will run!
